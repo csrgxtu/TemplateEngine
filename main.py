@@ -14,6 +14,6 @@ PAGE_HTML = """
 """
 
 t = Template(PAGE_HTML)
-print t.code
-print t.compiled
+print type(t.code), t.code
+print type(t.code), t.compiled
 print t.generate(username='archer', job_list=['engineer', 'QA', 'PM'])
