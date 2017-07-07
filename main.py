@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from TemplateEngine import Template
+from templite import Templite
 
 PAGE_HTML = """
 <html>
@@ -8,12 +8,14 @@ PAGE_HTML = """
   <ul>
     {% for job in job_list %}
       <li>{{ job }}</li>
-    {% end %}
+    {% endfor %}
   </ul>
 </html>
 """
 
-t = Template(PAGE_HTML)
-print type(t.code), t.code
-print type(t.code), t.compiled
-print t.generate(username='archer', job_list=['engineer', 'QA', 'PM'])
+data = {
+  'username': 'archer',
+  'job_list': ['engineer', 'qa', 'pm']
+}
+t = Templite(PAGE_HTML)
+print t.render(data)
